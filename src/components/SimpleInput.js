@@ -1,19 +1,20 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef()
   const [enternedName, setEnteredName] = useState('')
   const [enternedNameIsValid, setEnteredNameIsValid] = useState(false)
   const [enternedNameTouched, setEnteredNameTouched] = useState(false)
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value)
+    if (event.target.value.trim()) {
+      setEnteredNameIsValid(true)
+    }
   }
   const nameInputBlurHandler = (event) => {
     setEnteredNameTouched(true)
     if (!enternedName.trim()) {
       setEnteredNameIsValid(false)
-      return
     }
   }
   const formSubmissionHandler = (event) => {
@@ -26,8 +27,6 @@ const SimpleInput = (props) => {
     setEnteredNameIsValid(true)
 
     console.log(enternedName)
-    const enterValue = nameInputRef.current.value
-    console.log(enterValue)
     setEnteredName('')
   }
   const nameInputIsInvalid = !enternedNameIsValid && enternedNameTouched
@@ -40,7 +39,6 @@ const SimpleInput = (props) => {
       <div className={nameInputClasses}>
         <label htmlFor='name'>Your Name</label>
         <input
-          ref={nameInputRef}
           type='text'
           id='name'
           onChange={nameInputChangeHandler}
