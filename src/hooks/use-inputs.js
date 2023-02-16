@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const useInputs = () => {
+const useInputs = (validityCheck) => {
   const [inputValue, setInputValue] = useState('')
   const [isTouched, setIsTouched] = useState(false)
 
@@ -12,6 +12,9 @@ const useInputs = () => {
   const blurHandler = (event) => {
     setIsTouched(true)
   }
+
+  const inputIsValid = validityCheck(inputValue)
+  const hasError = !inputIsValid && isTouched
   return {
     inputValue: inputValue,
     setInputValue,
@@ -19,6 +22,8 @@ const useInputs = () => {
     setIsTouched,
     changeHandler,
     blurHandler,
+    inputIsValid,
+    hasError,
   }
 }
 
