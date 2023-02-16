@@ -9,7 +9,9 @@ const BasicForm = (props) => {
     setIsTouched: setFirstNameIsTouched,
     changeHandler: firstNameChangeHandler,
     blurHandler: firstNameBlurHandler,
-  } = useInputs()
+    inputIsValid: firstNameInputIsValid,
+    hasError: firstNameHasError,
+  } = useInputs((value) => value.trim() !== '')
 
   const [lastNameInputValue, setLastNameInputValue] = useState('')
   const [lastNameIsTouched, setLastNameIsTouched] = useState(false)
@@ -31,8 +33,7 @@ const BasicForm = (props) => {
   const emailBlurHandler = (event) => {
     setEmailIsTouched(true)
   }
-  const firstNameInputIsValid = firstNameInputValue.trim() !== ''
-  const firstNameHasError = !firstNameInputIsValid && firstNameIsTouched
+
   const lastNameInputIsValid = lastNameInputValue.trim() !== ''
   const lastNameHasError = !lastNameInputIsValid && lastNameIsTouched
   const emailInputIsValid = emailInputValue.includes('@')
