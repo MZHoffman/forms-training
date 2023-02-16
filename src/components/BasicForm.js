@@ -35,7 +35,7 @@ const BasicForm = (props) => {
   const firstNameHasError = !firstNameInputIsValid && firstNameIsTouched
   const lastNameInputIsValid = lastNameInputValue.trim() !== ''
   const lastNameHasError = !lastNameInputIsValid && lastNameIsTouched
-  const emailInputIsValid = emailInputValue.trim() !== ''
+  const emailInputIsValid = emailInputValue.includes('@')
   const emailHasError = !emailInputIsValid && emailIsTouched
 
   const isFormInvalid =
