@@ -22,9 +22,6 @@ const useInputs = (validityCheck) => {
   const inputClasses = hasError ? 'form-control invalid' : 'form-control '
   return {
     inputValue: inputValue,
-    setInputValue,
-    isTouched,
-    setIsTouched,
     changeHandler,
     blurHandler,
     inputIsValid,

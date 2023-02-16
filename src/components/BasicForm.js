@@ -4,9 +4,6 @@ import useInputs from '../hooks/use-inputs'
 const BasicForm = (props) => {
   const {
     inputValue: firstNameInputValue,
-    setInputValue: setFirstNameInputValue,
-    isTouched: firstNameIsTouched,
-    setIsTouched: setFirstNameIsTouched,
     changeHandler: firstNameChangeHandler,
     blurHandler: firstNameBlurHandler,
     inputIsValid: firstNameInputIsValid,
@@ -17,9 +14,6 @@ const BasicForm = (props) => {
 
   const {
     inputValue: lastNameInputValue,
-    setInputValue: setLastNameInputValue,
-    isTouched: lastNameIsTouched,
-    setIsTouched: setLastNameIsTouched,
     changeHandler: lastNameChangeHandler,
     blurHandler: lastNameBlurHandler,
     inputIsValid: lastNameInputIsValid,
@@ -30,9 +24,6 @@ const BasicForm = (props) => {
 
   const {
     inputValue: emailInputValue,
-    setInputValue: setEmailInputValue,
-    isTouched: emailIsTouched,
-    setIsTouched: setEmailIsTouched,
     changeHandler: emailChangeHandler,
     blurHandler: emailBlurHandler,
     inputIsValid: emailInputIsValid,
