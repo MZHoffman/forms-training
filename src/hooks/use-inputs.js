@@ -12,7 +12,10 @@ const useInputs = (validityCheck) => {
   const blurHandler = (event) => {
     setIsTouched(true)
   }
-
+  const reset = () => {
+    setInputValue('')
+    setIsTouched(false)
+  }
   const inputIsValid = validityCheck(inputValue)
   const hasError = !inputIsValid && isTouched
   return {
@@ -24,6 +27,7 @@ const useInputs = (validityCheck) => {
     blurHandler,
     inputIsValid,
     hasError,
+    reset,
   }
 }
 

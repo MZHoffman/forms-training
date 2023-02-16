@@ -11,6 +11,7 @@ const BasicForm = (props) => {
     blurHandler: firstNameBlurHandler,
     inputIsValid: firstNameInputIsValid,
     hasError: firstNameHasError,
+    reset: resetFirstName,
   } = useInputs((value) => value.trim() !== '')
 
   const {
@@ -22,6 +23,7 @@ const BasicForm = (props) => {
     blurHandler: lastNameBlurHandler,
     inputIsValid: lastNameInputIsValid,
     hasError: lastNameHasError,
+    reset: resetLastName,
   } = useInputs((value) => value.trim() !== '')
 
   const {
@@ -33,6 +35,7 @@ const BasicForm = (props) => {
     blurHandler: emailBlurHandler,
     inputIsValid: emailInputIsValid,
     hasError: emailHasError,
+    reset: resetEmail,
   } = useInputs((value) => value.includes('@'))
 
   const isFormInvalid =
@@ -40,12 +43,9 @@ const BasicForm = (props) => {
   console.log(isFormInvalid)
   const submitHandler = (event) => {
     event.preventDefault()
-    setFirstNameInputValue('')
-    setFirstNameIsTouched(false)
-    setLastNameInputValue('')
-    setLastNameIsTouched(false)
-    setEmailInputValue('')
-    setEmailIsTouched(false)
+    resetFirstName()
+    resetLastName()
+    resetEmail()
   }
   return (
     <form onSubmit={submitHandler}>
