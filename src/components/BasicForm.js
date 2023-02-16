@@ -1,17 +1,20 @@
 import { useState } from 'react'
+import useInputs from '../hooks/use-inputs'
 
 const BasicForm = (props) => {
-  const [firstNameInputValue, setFirstNameInputValue] = useState('')
-  const [firstNameIsTouched, setFirstNameIsTouched] = useState(false)
+  const {
+    inputValue: firstNameInputValue,
+    setInputValue: setFirstNameInputValue,
+    isTouched: firstNameIsTouched,
+    setIsTouched: setFirstNameIsTouched,
+    changeHandler: firstNameChangeHandler,
+  } = useInputs()
+
   const [lastNameInputValue, setLastNameInputValue] = useState('')
   const [lastNameIsTouched, setLastNameIsTouched] = useState(false)
   const [emailInputValue, setEmailInputValue] = useState('')
   const [emailIsTouched, setEmailIsTouched] = useState(false)
 
-  const firstNameChangeHandler = (event) => {
-    setFirstNameInputValue(event.target.value)
-    setFirstNameIsTouched(true)
-  }
   const lastNameChangeHandler = (event) => {
     setLastNameInputValue(event.target.value)
     setLastNameIsTouched(true)
