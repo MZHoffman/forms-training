@@ -33,14 +33,23 @@ const BasicForm = (props) => {
   const firstNameHasError = !firstNameInputIsValid && firstNameIsTouched
   const lastNameInputIsValid = lastNameInputValue.trim() !== ''
   const lastNameHasError = !lastNameInputIsValid && lastNameIsTouched
-  const emailInputIsValid = firstNameInputValue.trim() !== ''
+  const emailInputIsValid = emailInputValue.trim() !== ''
   const emailHasError = !emailInputIsValid && emailIsTouched
 
   const isFormInvalid =
-    !firstNameInputIsValid && !lastNameInputIsValid && !emailInputIsValid
-
+    !firstNameInputIsValid || !lastNameInputIsValid || !emailInputIsValid
+  console.log(isFormInvalid)
+  const submitHandler = (event) => {
+    event.preventDefault()
+    setFirstNameInputValue('')
+    setFirstNameIsTouched(false)
+    setLastNameInputValue('')
+    setLastNameIsTouched(false)
+    setEmailInputValue('')
+    setEmailIsTouched(false)
+  }
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className='control-group'>
         <div className='form-control'>
           <label htmlFor='first-name'>First Name</label>
