@@ -8,12 +8,17 @@ const useInputs = () => {
     setInputValue(event.target.value)
     setIsTouched(true)
   }
+
+  const blurHandler = (event) => {
+    setIsTouched(true)
+  }
   return {
     inputValue: inputValue,
     setInputValue,
     isTouched,
     setIsTouched,
     changeHandler,
+    blurHandler,
   }
 }
 

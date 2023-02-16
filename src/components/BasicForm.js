@@ -8,6 +8,7 @@ const BasicForm = (props) => {
     isTouched: firstNameIsTouched,
     setIsTouched: setFirstNameIsTouched,
     changeHandler: firstNameChangeHandler,
+    blurHandler: firstNameBlurHandler,
   } = useInputs()
 
   const [lastNameInputValue, setLastNameInputValue] = useState('')
@@ -23,9 +24,7 @@ const BasicForm = (props) => {
     setEmailInputValue(event.target.value)
     setEmailIsTouched(true)
   }
-  const firstNameBlurHandler = (event) => {
-    setFirstNameIsTouched(true)
-  }
+
   const lastNameBlurHandler = (event) => {
     setLastNameIsTouched(true)
   }
