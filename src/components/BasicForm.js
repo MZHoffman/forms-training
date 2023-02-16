@@ -13,31 +13,27 @@ const BasicForm = (props) => {
     hasError: firstNameHasError,
   } = useInputs((value) => value.trim() !== '')
 
-  const [lastNameInputValue, setLastNameInputValue] = useState('')
-  const [lastNameIsTouched, setLastNameIsTouched] = useState(false)
-  const [emailInputValue, setEmailInputValue] = useState('')
-  const [emailIsTouched, setEmailIsTouched] = useState(false)
+  const {
+    inputValue: lastNameInputValue,
+    setInputValue: setLastNameInputValue,
+    isTouched: lastNameIsTouched,
+    setIsTouched: setLastNameIsTouched,
+    changeHandler: lastNameChangeHandler,
+    blurHandler: lastNameBlurHandler,
+    inputIsValid: lastNameInputIsValid,
+    hasError: lastNameHasError,
+  } = useInputs((value) => value.trim() !== '')
 
-  const lastNameChangeHandler = (event) => {
-    setLastNameInputValue(event.target.value)
-    setLastNameIsTouched(true)
-  }
-  const emailChangeHandler = (event) => {
-    setEmailInputValue(event.target.value)
-    setEmailIsTouched(true)
-  }
-
-  const lastNameBlurHandler = (event) => {
-    setLastNameIsTouched(true)
-  }
-  const emailBlurHandler = (event) => {
-    setEmailIsTouched(true)
-  }
-
-  const lastNameInputIsValid = lastNameInputValue.trim() !== ''
-  const lastNameHasError = !lastNameInputIsValid && lastNameIsTouched
-  const emailInputIsValid = emailInputValue.includes('@')
-  const emailHasError = !emailInputIsValid && emailIsTouched
+  const {
+    inputValue: emailInputValue,
+    setInputValue: setEmailInputValue,
+    isTouched: emailIsTouched,
+    setIsTouched: setEmailIsTouched,
+    changeHandler: emailChangeHandler,
+    blurHandler: emailBlurHandler,
+    inputIsValid: emailInputIsValid,
+    hasError: emailHasError,
+  } = useInputs((value) => value.includes('@'))
 
   const isFormInvalid =
     !firstNameInputIsValid || !lastNameInputIsValid || !emailInputIsValid
