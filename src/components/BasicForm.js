@@ -36,6 +36,9 @@ const BasicForm = (props) => {
   const emailInputIsValid = firstNameInputValue.trim() !== ''
   const emailHasError = !emailInputIsValid && emailIsTouched
 
+  const isFormInvalid =
+    !firstNameInputIsValid && !lastNameInputIsValid && !emailInputIsValid
+
   return (
     <form>
       <div className='control-group'>
@@ -74,7 +77,7 @@ const BasicForm = (props) => {
         {emailHasError && <p>Email must not be empty</p>}
       </div>
       <div className='form-actions'>
-        <button>Submit</button>
+        <button disabled={isFormInvalid}>Submit</button>
       </div>
     </form>
   )
