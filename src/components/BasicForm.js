@@ -12,6 +12,7 @@ const BasicForm = (props) => {
     inputIsValid: firstNameInputIsValid,
     hasError: firstNameHasError,
     reset: resetFirstName,
+    inputClasses: firstNameInputClasses,
   } = useInputs((value) => value.trim() !== '')
 
   const {
@@ -24,6 +25,7 @@ const BasicForm = (props) => {
     inputIsValid: lastNameInputIsValid,
     hasError: lastNameHasError,
     reset: resetLastName,
+    inputClasses: lastNameInputClasses,
   } = useInputs((value) => value.trim() !== '')
 
   const {
@@ -36,21 +38,22 @@ const BasicForm = (props) => {
     inputIsValid: emailInputIsValid,
     hasError: emailHasError,
     reset: resetEmail,
+    inputClasses: emailInputClasses,
   } = useInputs((value) => value.includes('@'))
 
   const isFormInvalid =
     !firstNameInputIsValid || !lastNameInputIsValid || !emailInputIsValid
-  console.log(isFormInvalid)
   const submitHandler = (event) => {
     event.preventDefault()
     resetFirstName()
     resetLastName()
     resetEmail()
   }
+
   return (
     <form onSubmit={submitHandler}>
       <div className='control-group'>
-        <div className='form-control'>
+        <div className={firstNameInputClasses}>
           <label htmlFor='first-name'>First Name</label>
           <input
             type='text'
@@ -61,7 +64,7 @@ const BasicForm = (props) => {
           />
           {firstNameHasError && <p>First Name must not be empty</p>}
         </div>
-        <div className='form-control'>
+        <div className={lastNameInputClasses}>
           <label htmlFor='last-name'>Last Name</label>
           <input
             type='text'
@@ -73,7 +76,7 @@ const BasicForm = (props) => {
           {lastNameHasError && <p>Last Name must not be empty</p>}
         </div>
       </div>
-      <div className='form-control'>
+      <div className={emailInputClasses}>
         <label htmlFor='email'>E-Mail Address</label>
         <input
           type='email'

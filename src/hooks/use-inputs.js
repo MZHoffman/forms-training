@@ -16,8 +16,10 @@ const useInputs = (validityCheck) => {
     setInputValue('')
     setIsTouched(false)
   }
+
   const inputIsValid = validityCheck(inputValue)
   const hasError = !inputIsValid && isTouched
+  const inputClasses = hasError ? 'form-control invalid' : 'form-control '
   return {
     inputValue: inputValue,
     setInputValue,
@@ -28,6 +30,7 @@ const useInputs = (validityCheck) => {
     inputIsValid,
     hasError,
     reset,
+    inputClasses,
   }
 }
 
