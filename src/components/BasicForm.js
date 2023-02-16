@@ -29,8 +29,12 @@ const BasicForm = (props) => {
   const emailBlurHandler = (event) => {
     setEmailIsTouched(true)
   }
- const InputIsValid = 
-  const HasError = 
+  const firstNameInputIsValid = firstNameInputValue.trim() !== ''
+  const firstNameHasError = !firstNameInputIsValid && firstNameIsTouched
+  const lastNameInputIsValid = lastNameInputValue.trim() !== ''
+  const lastNameHasError = !lastNameInputIsValid && lastNameIsTouched
+  const emailInputIsValid = firstNameInputValue.trim() !== ''
+  const emailHasError = !emailInputIsValid && emailIsTouched
 
   return (
     <form>
@@ -44,6 +48,7 @@ const BasicForm = (props) => {
             onBlur={firstNameBlurHandler}
             value={firstNameInputValue}
           />
+          {firstNameHasError && <p>First Name must not be empty</p>}
         </div>
         <div className='form-control'>
           <label htmlFor='last-name'>Last Name</label>
@@ -54,6 +59,7 @@ const BasicForm = (props) => {
             onBlur={lastNameBlurHandler}
             value={lastNameInputValue}
           />
+          {lastNameHasError && <p>Last Name must not be empty</p>}
         </div>
       </div>
       <div className='form-control'>
@@ -65,6 +71,7 @@ const BasicForm = (props) => {
           onBlur={emailBlurHandler}
           value={emailInputValue}
         />
+        {emailHasError && <p>Email must not be empty</p>}
       </div>
       <div className='form-actions'>
         <button>Submit</button>
