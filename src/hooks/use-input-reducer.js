@@ -17,7 +17,7 @@ const inputStateReducer = (state, action) => {
   return initialInputState
 }
 
-const useInputsReducer = (validityCheck) => {
+const useInputReducer = (validityCheck) => {
   const [inputState, dispatch] = useReducer(
     inputStateReducer,
     initialInputState
@@ -47,4 +47,4 @@ const useInputsReducer = (validityCheck) => {
   }
 }
 
-export default useInputsReducer
+export default useInputReducer

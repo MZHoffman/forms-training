@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useInputs from '../hooks/use-inputs'
+import useInputReducer from '../hooks/use-input-reducer'
 
 const BasicForm = (props) => {
   const {
@@ -10,7 +10,7 @@ const BasicForm = (props) => {
     hasError: firstNameHasError,
     reset: resetFirstName,
     inputClasses: firstNameInputClasses,
-  } = useInputs((value) => value.trim() !== '')
+  } = useInputReducer((value) => value.trim() !== '')
 
   const {
     inputValue: lastNameInputValue,
@@ -20,7 +20,7 @@ const BasicForm = (props) => {
     hasError: lastNameHasError,
     reset: resetLastName,
     inputClasses: lastNameInputClasses,
-  } = useInputs((value) => value.trim() !== '')
+  } = useInputReducer((value) => value.trim() !== '')
 
   const {
     inputValue: emailInputValue,
@@ -30,7 +30,7 @@ const BasicForm = (props) => {
     hasError: emailHasError,
     reset: resetEmail,
     inputClasses: emailInputClasses,
-  } = useInputs((value) => value.includes('@'))
+  } = useInputReducer((value) => value.includes('@'))
 
   const isFormInvalid =
     !firstNameInputIsValid || !lastNameInputIsValid || !emailInputIsValid
